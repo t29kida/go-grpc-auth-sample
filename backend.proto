@@ -1,0 +1,39 @@
+syntax = 'proto3';
+
+package go_grpc_auth_sample;
+
+option go_package = "github.com/t29kida/go-grpc-auth-sample/proto/pb";
+
+service BackendService {
+  rpc SignUp(SignUpRequest) returns (SignUpResponse) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+
+  rpc Greet(GreetRequest) returns (GreetResponse) {}
+  rpc PrivateGreet(GreetRequest) returns (GreetResponse) {}
+}
+
+message SignUpRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message SignUpResponse {
+  string access_token = 1;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string access_token = 1;
+}
+
+message GreetRequest {
+  string name = 1;
+}
+
+message GreetResponse {
+  string message = 1;
+}
